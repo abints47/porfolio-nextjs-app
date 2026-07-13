@@ -9,11 +9,11 @@ import Image from "next/image"
 
 export default function AppNavbar() {
   return (
-    <Navbar bg="dark" variant="dark" expand="lg">
+    <Navbar expand="lg">
       <Container>
         
         <Navbar.Brand as={Link} href="/">
-        <Image src="/images.png" alt="logo" width={40} height={40} className="rounded-circle me-2" />   Abin T S</Navbar.Brand>
+        <Image src="/images.png" alt="logo" width={40} height={40} className="rounded" />   Abin T S</Navbar.Brand>
         <Navbar.Toggle aria-controls="main-navbar" />
         <Navbar.Collapse id="main-navbar">
           <Nav className="ms-auto">
