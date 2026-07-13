@@ -2,7 +2,7 @@
 
 A personal portfolio website built with Next.js and Bootstrap, featuring routing, a dark/light theme toggle, and a contact form.
 
-🔗 **Live Demo:** [https://porfolio-8tfar4elv-948635.vercel.app/](https://porfolio-8tfar4elv-948635.vercel.app/)
+🔗 **Live Demo:** [https://abin-dev-portfolio.vercel.app/](https://porfolio-8tfar4elv-948635.vercel.app/)
 
 ---
 
