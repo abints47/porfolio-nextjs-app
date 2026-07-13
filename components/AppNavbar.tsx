@@ -15,8 +15,8 @@ export default function AppNavbar() {
           <Nav className="ms-auto">
             <Nav.Link as={Link} href="/">Home</Nav.Link>
             <Nav.Link as={Link} href="/about">About</Nav.Link>
-            <Nav.Link as={Link} href="/projects">Projects</Nav.Link>
-            <Nav.Link as={Link} href="/contact">Contact</Nav.Link>
+            <Nav.Link as={Link} href="/Projects">Projects</Nav.Link>
+            <Nav.Link as={Link} href="/Contact">Contact</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
