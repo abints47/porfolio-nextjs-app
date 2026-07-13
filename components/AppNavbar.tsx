@@ -1,15 +1,19 @@
 "use client";
-
+import ThemeToggle from "@/components/ThemeToggle";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
 import Link from "next/link";
+import Image from "next/image"
+
 
 export default function AppNavbar() {
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
       <Container>
-        <Navbar.Brand as={Link} href="/">Abin T S</Navbar.Brand>
+        
+        <Navbar.Brand as={Link} href="/">
+        <Image src="/images.png" alt="logo" width={40} height={40} className="rounded-circle me-2" />   Abin T S</Navbar.Brand>
         <Navbar.Toggle aria-controls="main-navbar" />
         <Navbar.Collapse id="main-navbar">
           <Nav className="ms-auto">
@@ -20,6 +24,8 @@ export default function AppNavbar() {
           </Nav>
         </Navbar.Collapse>
       </Container>
+      <ThemeToggle/>
     </Navbar>
+    
   );
 }
