@@ -9,13 +9,13 @@ export default function Footer() {
     <footer className="bg-dark mt-5 py-4">
       <Container className="text-center">
         <div className="d-flex justify-content-center gap-4 mb-3 fs-4">
-          <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="text-white">
+          <a href="https://github.com/abints47" target="_blank" rel="noopener noreferrer" className="text-white">
             <FaGithub />
           </a>
           <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" className="text-white">
             <FaLinkedin />
           </a>
-          <a href="mailto:you@example.com" className="text-white">
+          <a href="mailto:abinthazhathupurakkal@gmail.com" className="text-white">
             <FaEnvelope />
           </a>
         </div>
