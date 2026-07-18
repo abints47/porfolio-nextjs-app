@@ -26,12 +26,12 @@ export default function AboutPageContent() {
       <Row className="align-items-center justify-content-center mb-5">
         <Col xs={12} md={4} lg={3} className="text-center mb-3 mb-md-0">
           <Image
-            src="/pic.jpg"
+            src="/photo.jpg"
             alt="Abin"
             width={200}
             height={200}
-            className="rounded-circle shadow"
-            style={{ objectFit: "cover" }}
+            className="rounded-3xl shadow"
+            style={{ width: '100%', height: 'auto' }}
           />
         </Col>
         <Col xs={12} md={6} lg={5}>
