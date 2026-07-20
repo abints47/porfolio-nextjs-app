@@ -23,6 +23,13 @@ const projects = [
     live: "https://nextjs-blog-eight-ochre-44.vercel.app",
     repo: "",
   },
+  {
+    title: "Todo App",
+    description: "A fast and responsive task management web application built with Next.js and powered by Supabase for real-time PostgreSQL database synchronization and data persistence.",
+    tags: ["Next.js", "TypeScript", "Shadcn ui", "Supabase", "Netlify"],
+    live: "https://todo-do-nextjs.netlify.app",
+    repo: "https://github.com/abints47/Todo--app",
+  },
 ];
 
 export default function ProjectsPage() {
