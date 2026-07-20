@@ -17,7 +17,7 @@ export default function ContactPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log(formData);
-    alert("Message sent! (not really yet — we'll wire this up next)");
+    alert("Message sent! not really yet — But I'll wire this up next)");
   };
 
   return (

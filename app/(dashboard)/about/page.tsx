@@ -26,7 +26,7 @@ export default function AboutPageContent() {
       <Row className="align-items-center justify-content-center mb-5">
         <Col xs={12} md={4} lg={3} className="text-center mb-3 mb-md-0">
           <Image
-            src="/photo.jpg"
+            src="/dp.png"
             alt="Abin"
             width={200}
             height={200}

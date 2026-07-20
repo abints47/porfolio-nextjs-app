@@ -2,24 +2,25 @@
 
 const projects = [
   {
-    title: "Project One",
-    description: "A short line about what this project does and who it helps.",
-    tags: ["Next.js", "TypeScript", "Tailwind"],
-    live: "https://your-live-link.com",
-    repo: "https://github.com/yourname/project-one",
+    title: "Blue Tide",
+    description: `Bluetide is a travel and lifestyle blog centered on the ocean and coastal living. It features articles and  stories about beautiful beaches, island culture,
+       and marine-related topics, all designed to inspire a sense of relaxation and connection with the sea.`,
+    tags: ["Next.js", "TypeScript", "Tailwind","Prisma ORM"],
+    live: "https://beach-bluetide.vercel.app",
+    repo: "https://github.com/abints47/BlueTide-nextjs-app",
   },
   {
-    title: "Project Two",
-    description: "A short line about what this project does and who it helps.",
-    tags: ["React", "Node.js"],
-    live: "https://your-live-link.com",
-    repo: "https://github.com/yourname/project-two",
+    title: "ACME Financial Dashboard",
+    description: "A financial dashboard built with Next.js, React, and Tailwind CSS. It provides users with a comprehensive overview of their financial data, including income, expenses, and investment performance.",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "PostgreSQL","NextAuth.js"],
+    live: "https://nextjs-dashboard-nu-eosin-n8gcrp27og.vercel.app",
+    repo: "https://github.com/abints47/nextjs-dashboard",
   },
   {
-    title: "Project Three",
-    description: "A short line about what this project does and who it helps.",
-    tags: ["Python", "FastAPI"],
-    live: "https://your-live-link.com",
+    title: "Next.js Markdown Blog Starter",
+    description: "The Next.js Markdown Blog Starter is a lightweight, high-performance web application template designed to showcase fast static site generation (SSG) using local Markdown/MDX files for content management.",
+    tags: ["Next.js", "Markdown", "FastAPI"],
+    live: "https://nextjs-blog-eight-ochre-44.vercel.app",
     repo: "",
   },
 ];
@@ -27,7 +28,10 @@ const projects = [
 export default function ProjectsPage() {
   return (
     <section className="container mt-4 p-3">
-      <p className="text-success text-uppercase fw-bold mb-1" style={{ letterSpacing: "2px" }}>
+      <p
+        className="text-success text-uppercase fw-bold mb-1"
+        style={{ letterSpacing: "2px" }}
+      >
         Work
       </p>
       <h2 className="fw-bold display-5">Projects</h2>
@@ -66,7 +70,10 @@ export default function ProjectsPage() {
 
             <div className="d-flex flex-wrap gap-2">
               {project.tags.map((tag) => (
-                <span key={tag} className="badge rounded-pill border text-body-secondary fw-normal">
+                <span
+                  key={tag}
+                  className="badge rounded-pill border text-body-secondary fw-normal"
+                >
                   {tag}
                 </span>
               ))}
