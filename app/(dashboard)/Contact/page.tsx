@@ -1,76 +1,65 @@
-"use client";
+import type { Metadata } from "next";
+import Reveal from "@/components/Reveal";
+import ContactForm from "@/components/ContactForm";
+import { socials } from "@/lib/data";
 
-import { useState } from "react";
-import { Container, Form, Button, Row, Col } from "react-bootstrap";
+export const metadata: Metadata = {
+  title: "Contact",
+};
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log(formData);
-    alert("Message sent! not really yet — But I'll wire this up next)");
-  };
-
   return (
-    <Container className="mt-5">
-      <h1 className="fw-bold text-center mb-4">Contact Me</h1>
-      <Row className="justify-content-center">
-        <Col md={6}>
-          <Form onSubmit={handleSubmit}>
-            <Form.Group className="mb-3">
-              <Form.Label>Name</Form.Label>
-              <Form.Control
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                placeholder="Your name"
-                required
-              />
-            </Form.Group>
+    <div className="mx-auto max-w-5xl px-6 pt-32 pb-4">
+      <Reveal>
+        <p className="font-mono text-sm text-accent">get in touch</p>
+        <h1 className="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">
+          Say hello<span className="text-accent">.</span>
+        </h1>
+        <p className="mt-4 max-w-lg text-muted">
+          Whether you have a project in mind, a role to fill, or just want to
+          talk shop — my inbox is always open.
+        </p>
+      </Reveal>
 
-            <Form.Group className="mb-3">
-              <Form.Label>Email</Form.Label>
-              <Form.Control
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                placeholder="you@example.com"
-                required
-              />
-            </Form.Group>
+      <div className="mt-14 grid gap-12 md:grid-cols-[1fr_1.4fr]">
+        {/* Direct channels */}
+        <Reveal>
+          <ul className="space-y-px">
+            {[
+              { label: "Email", value: "abinthazhathupurakkal@gmail.com", href: socials.email },
+              { label: "GitHub", value: "@abints47", href: socials.github },
+              { label: "LinkedIn", value: "Abin T S", href: socials.linkedin },
+            ].map((item) => (
+              <li
+                key={item.label}
+                className="group border-b border-border py-4"
+              >
+                <p className="font-mono text-[11px] uppercase tracking-widest text-muted">
+                  {item.label}
+                </p>
+                <a
+                  href={item.href}
+                  target={item.href.startsWith("http") ? "_blank" : undefined}
+                  rel="noopener noreferrer"
+                  className="mt-1 inline-block font-medium transition-colors group-hover:text-accent"
+                >
+                  {item.value}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-8 font-mono text-xs leading-relaxed text-muted">
+            Based in Kerala, India (UTC+5:30).
+            <br />
+            Usually replies within a day.
+          </p>
+        </Reveal>
 
-            <Form.Group className="mb-3">
-              <Form.Label>Message</Form.Label>
-              <Form.Control
-                as="textarea"
-                rows={4}
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                placeholder="Your message"
-                required
-              />
-            </Form.Group>
-
-            <div className="text-center">
-              <Button type="submit" variant="primary" className="px-4">
-                Send Message
-              </Button>
-            </div>
-          </Form>
-        </Col>
-      </Row>
-    </Container>
+        {/* Form */}
+        <Reveal delay={0.1}>
+          <ContactForm />
+        </Reveal>
+      </div>
+    </div>
   );
 }

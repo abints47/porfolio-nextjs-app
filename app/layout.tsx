@@ -1,10 +1,9 @@
-
-import "bootstrap/dist/css/bootstrap.min.css";
-import AppNavbar from "@/components/AppNavbar";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Footer from "@/components/Footer"
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import ScrollProgress from "@/components/ScrollProgress";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,8 +16,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio",
-  description: "Welcome to my Nextjs site",
+  title: {
+    default: "Abin T S — Full-Stack Developer",
+    template: "%s — Abin T S",
+  },
+  description:
+    "Portfolio of Abin T S, a full-stack developer building fast, minimal web experiences with Next.js, React and TypeScript.",
 };
 
 export default function RootLayout({
@@ -27,12 +30,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-scroll-behavior="smooth" className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html
+      lang="en"
+      data-theme="dark"
+      className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
+    >
       <body>
-        <AppNavbar/>
-         <main className="flex-grow-1">{children}</main>
-        <Footer/>
-        </body>
+        <ScrollProgress />
+        <Navbar />
+        <main>{children}</main>
+        <Footer />
+      </body>
     </html>
   );
 }
