@@ -1,31 +1,37 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
-import type { ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
+import { motion } from "framer-motion";
 
 interface RevealProps {
   children: ReactNode;
   delay?: number;
-  y?: number;
   className?: string;
 }
 
-/** Fades + slides content in the first time it scrolls into view. */
-export default function Reveal({
-  children,
-  delay = 0,
-  y = 24,
-  className,
-}: RevealProps) {
-  const reduce = useReducedMotion();
+/** Minimal scroll animation — a quiet opacity fade, nothing moves.
+ *  Skipped entirely (content shown statically) under reduced motion. */
+export default function Reveal({ children, delay = 0, className }: RevealProps) {
+  const [reduce, setReduce] = useState(false);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setReduce(true);
+    }
+  }, []);
+
+  // Reduced motion → plain static wrapper, content always visible
+  if (reduce) {
+    return <div className={className}>{children}</div>;
+  }
 
   return (
     <motion.div
       className={className}
-      initial={reduce ? false : { opacity: 0, y }}
-      whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.6, delay, ease: [0.21, 0.47, 0.32, 0.98] }}
+      transition={{ duration: 0.55, delay, ease: "easeOut" }}
     >
       {children}
     </motion.div>

@@ -52,15 +52,35 @@ export const skills = [
   "PostgreSQL",
   "Supabase",
   "Git",
+  "SEO",
+  "Google Analytics",
+  "Keyword Research",
+  "Responsive Design",
+  "Web Performance",
 ];
 
 export const experience = [
   {
+    period: "Nov to present",
+    role: "Mern stack developer",
+    company: "Knovista technologies",
+    location: "Info Park",
+    summary:
+      "Built and maintained full-stack web applications using the MERN stack (MongoDB, Express, React, Node.js). Developed RESTful APIs, implemented database schemas, and contributed to client-side functionality with responsive UI components.",
+  },
+  {
     period: "2024 — Present",
-    role: "Trainee — Full-Stack Development",
+    role: "Python Next js developer",
     company: "MakTal Technologies Pvt Ltd",
     summary:
       "Building complete, full-stack web applications with Next.js — mastering front-end UI and back-end logic in a single framework, with a focus on server-side rendering, API routing and performance optimization.",
+  },
+  {
+    period: "Feb 2025",
+    role: "Full Stack Web Development Certification",
+    company: "Udemy",
+    summary:
+      "Built and deployed end-to-end web applications using HTML, CSS, React.js and backend frameworks, gaining hands-on exposure to client-server interaction, REST API integration, and deployment workflows. Worked with SQL and NoSQL databases (MySQL, MongoDB) to design schemas and manage data persistence, while practicing systematic debugging across the full stack.",
   },
 ];
 

@@ -21,20 +21,19 @@ export default function ProjectsPage() {
         </p>
       </Reveal>
 
-      <Reveal delay={0.1}>
-        <div className="mt-14">
-          {projects.map((project) => (
+      <div className="mt-14 grid gap-5 sm:grid-cols-2">
+        {projects.map((project, i) => (
+          <Reveal key={project.title} delay={i * 0.06} className="h-full">
             <ProjectItem
-              key={project.title}
               title={project.title}
               description={project.description}
               tags={project.tags}
               live={project.live}
               repo={project.repo}
             />
-          ))}
-        </div>
-      </Reveal>
+          </Reveal>
+        ))}
+      </div>
 
       <Reveal>
         <p className="mt-10 text-center font-mono text-xs text-muted">

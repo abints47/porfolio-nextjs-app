@@ -25,8 +25,8 @@ export default function AboutPage() {
           <Image
             src="/dp.png"
             alt="Portrait of Abin"
-            width={120}
-            height={120}
+            width={240}
+            height={240}
             priority
             className="rounded-full border border-border object-cover"
           />
@@ -65,6 +65,17 @@ export default function AboutPage() {
         </div>
       </Reveal>
 
+      {/* Resume */}
+      <section className="mt-8 text-center">
+        <a
+          href="/Abin_Resume.pdf"
+          download
+          className="rounded-full border border-accent px-8 py-3 font-mono text-accent transition-colors hover:bg-accent/10"
+        >
+          Download Resume PDF
+        </a>
+      </section>
+
       {/* Journey */}
       <section className="mt-24">
         <SectionHeading title="My journey" />
@@ -99,7 +110,7 @@ export default function AboutPage() {
         <SectionHeading title="What I'm learning now" />
         <div className="grid gap-6 md:grid-cols-2">
           <Reveal>
-            <div className="rounded-xl border border-border p-6 transition-colors hover:border-accent/40">
+            <div className="rounded-lg border border-border p-6 transition-colors hover:border-accent/40">
               <h3 className="font-semibold">Metadata &amp; SEO in Next.js</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted">
                 Mastering the App Router metadata API — global titles, per-page
@@ -109,7 +120,7 @@ export default function AboutPage() {
             </div>
           </Reveal>
           <Reveal delay={0.1}>
-            <div className="rounded-xl border border-border p-6 transition-colors hover:border-accent/40">
+            <div className="rounded-lg border border-border p-6 transition-colors hover:border-accent/40">
               <h3 className="font-semibold">Full-stack fundamentals</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted">
                 Server components, API routes, databases and authentication —

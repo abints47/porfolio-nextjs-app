@@ -2,7 +2,14 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import {
+  AnimatePresence,
+  motion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
+import Magnetic from "@/components/Magnetic";
+import ScrambleText from "@/components/ScrambleText";
 
 const words = ["interfaces", "experiences", "applications", "websites"];
 
@@ -21,8 +28,20 @@ const item = {
 };
 
 export default function Hero() {
-  const reduce = useReducedMotion();
+  // Detected after mount to keep SSR markup stable; used only to
+  // disable infinite loops (bouncing cue, word flip) under reduced motion.
+  const [reduce, setReduce] = useState(false);
   const [wordIndex, setWordIndex] = useState(0);
+
+  const { scrollY } = useScroll();
+  const heroOpacity = useTransform(scrollY, [0, 380], [1, 0.25]);
+  const heroY = useTransform(scrollY, [0, 380], [0, 60]);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setReduce(true);
+    }
+  }, []);
 
   useEffect(() => {
     const timer = setInterval(
@@ -33,46 +52,30 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="page-dots relative flex min-h-[92vh] items-center overflow-hidden">
-      {/* Drifting accent glows */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
-        <div className="animate-float absolute -top-40 -left-40 h-[440px] w-[440px] rounded-full bg-accent/10 blur-[130px]" />
-        <div className="animate-float-slow absolute top-1/3 -right-40 h-[400px] w-[400px] rounded-full bg-accent/5 blur-[110px]" />
-      </div>
-
+    <section className="relative flex min-h-[88vh] items-center overflow-hidden">
       <motion.div
-        variants={reduce ? undefined : container}
+        variants={container}
         initial="hidden"
         animate="show"
+        style={reduce ? undefined : { opacity: heroOpacity, y: heroY }}
         className="relative mx-auto w-full max-w-5xl px-6"
       >
-        {/* Availability chip */}
-        <motion.div variants={reduce ? undefined : item} className="mb-8">
-          <span className="inline-flex items-center gap-2 rounded-full border border-border px-3 py-1 font-mono text-xs text-muted">
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
-            </span>
-            Available for new opportunities
-          </span>
-        </motion.div>
-
-        <motion.p
-          variants={reduce ? undefined : item}
-          className="mb-3 font-mono text-sm text-accent"
-        >
-          Hi, my name is
+        <motion.p variants={item} className="mb-3">
+          <ScrambleText
+            text="Hi, my name is"
+            className="font-mono text-sm text-accent"
+          />
         </motion.p>
 
         <motion.h1
-          variants={reduce ? undefined : item}
-          className="text-gradient text-5xl font-bold tracking-tight sm:text-7xl"
+          variants={item}
+          className="text-5xl font-bold tracking-tight sm:text-7xl"
         >
           Abin T S
         </motion.h1>
 
         <motion.h2
-          variants={reduce ? undefined : item}
+          variants={item}
           className="mt-4 flex flex-wrap gap-x-3 text-xl text-muted sm:text-3xl"
         >
           <span>
@@ -81,7 +84,7 @@ export default function Hero() {
               <AnimatePresence mode="wait">
                 <motion.span
                   key={words[wordIndex]}
-                  initial={reduce ? false : { opacity: 0, y: 10 }}
+                  initial={reduce ? undefined : { opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={reduce ? undefined : { opacity: 0, y: -10 }}
                   transition={{ duration: 0.35 }}
@@ -95,10 +98,7 @@ export default function Hero() {
           <span>for the web.</span>
         </motion.h2>
 
-        <motion.p
-          variants={reduce ? undefined : item}
-          className="mt-6 max-w-xl leading-relaxed text-muted"
-        >
+        <motion.p variants={item} className="mt-6 max-w-xl leading-relaxed text-muted">
           I&apos;m a full-stack developer currently training at{" "}
           <Link
             href="https://www.maktalseo.com"
@@ -114,35 +114,36 @@ export default function Hero() {
         </motion.p>
 
         {/* CTAs */}
-        <motion.div
-          variants={reduce ? undefined : item}
-          className="mt-10 flex flex-wrap gap-4"
-        >
-          <Link
-            href="/Projects"
-            className="group inline-flex items-center gap-2 rounded-full bg-accent px-6 py-2.5 font-mono text-sm font-medium text-background transition-transform hover:scale-[1.03] active:scale-95"
-          >
-            View my work
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="transition-transform group-hover:translate-x-0.5"
+        <motion.div variants={item} className="mt-10 flex flex-wrap gap-4">
+          <Magnetic>
+            <Link
+              href="/Projects"
+              className="group inline-flex items-center gap-2 rounded-full bg-accent px-6 py-2.5 font-mono text-sm font-medium text-background transition-transform hover:scale-[1.03] active:scale-95"
             >
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
-          </Link>
-          <Link
-            href="/Contact"
-            className="rounded-full border border-border px-6 py-2.5 font-mono text-sm text-muted transition-colors hover:border-muted hover:text-foreground"
-          >
-            Get in touch
-          </Link>
+              View my work
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="transition-transform group-hover:translate-x-0.5"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </Link>
+          </Magnetic>
+          <Magnetic>
+            <Link
+              href="/Contact"
+              className="rounded-full border border-border px-6 py-2.5 font-mono text-sm text-muted transition-colors hover:border-muted hover:text-foreground"
+            >
+              Get in touch
+            </Link>
+          </Magnetic>
         </motion.div>
       </motion.div>
 
@@ -150,9 +151,6 @@ export default function Hero() {
       <motion.a
         href="#about"
         aria-label="Scroll to about section"
-        initial={reduce ? undefined : { opacity: 0 }}
-        animate={reduce ? undefined : { opacity: 1 }}
-        transition={reduce ? undefined : { delay: 1.2, duration: 0.6 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
       >
         <motion.div

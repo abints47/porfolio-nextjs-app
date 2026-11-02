@@ -1,127 +1,176 @@
-# Portfolio Website
+<div align="center">
 
-A personal portfolio website built with Next.js and Bootstrap, featuring routing, a dark/light theme toggle, and a contact form.
+# Abin T S — Developer Portfolio
 
-🔗 **Live Demo:** [https://abin-dev-portfolio.vercel.app/](https://porfolio-8tfar4elv-948635.vercel.app/)
+**A super-minimal, dark-first portfolio built with Next.js — with scroll-driven animations, a self-typing terminal and a monochrome design system.**
 
----
+[![Next.js](https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=next.js)](https://nextjs.org)
+[![React](https://img.shields.io/badge/React-19-black?style=flat-square&logo=react)](https://react.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-black?style=flat-square&logo=typescript)](https://www.typescriptlang.org)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-black?style=flat-square&logo=tailwindcss)](https://tailwindcss.com)
+[![Framer Motion](https://img.shields.io/badge/Framer_Motion-12-black?style=flat-square)](https://www.framer.com/motion/)
 
-## Tech Stack
-
-- **[Next.js](https://nextjs.org/)** — React framework using the App Router for file-based routing, layouts, and Server/Client Components
-- **[React](https://react.dev/)** — UI library
-- **[TypeScript](https://www.typescriptlang.org/)** — typed JavaScript
-- **[Bootstrap 5](https://getbootstrap.com/)** — CSS framework for layout, spacing, and components
-- **[react-bootstrap](https://react-bootstrap.github.io/)** — React component bindings for Bootstrap (Navbar, Card, Form, Badge, etc.)
-- **[react-icons](https://react-icons.github.io/react-icons/)** — icon library used for social links in the footer
-- **[Vercel](https://vercel.com/)** — hosting and deployment
+</div>
 
 ---
 
-## Features
+## 📸 Screenshots
 
-- **File-based routing** using the Next.js App Router, organized under a `(dashboard)` route group
-- **Responsive Navbar** with logo, navigation links, and a theme toggle
-- **Dark/Light mode toggle** using Bootstrap's `data-bs-theme` attribute, persisted via `localStorage`
-- **Hero section** with colorful highlight cards (Bootstrap `Card`, `Row`, `Col` grid)
-- **Skills section** displaying tech stack as styled badges
-- **About page** with a cover image, profile photo, and blog-style content layout
-- **Contact page** with a working form (name, email, message) built with `react-bootstrap`'s `Form` component
-- **Sticky footer** with social links (GitHub, LinkedIn, email) that stays at the bottom of every page
-- **Theme-aware Navbar/Footer** — backgrounds and text automatically match the current light/dark theme
+> Dark at all times — designed to be viewed as-is.
 
----
+| | |
+|---|---|
+| ![Hero — animated intro, magnetic CTAs and rotating headline](screenshots/home-hero.png) | ![About — linked bio and quick facts](screenshots/home-about.png) |
+| ![Right now — the "what I'm up to" board](screenshots/home-now.png) | ![Experience — timeline that draws itself on scroll](screenshots/home-experience.png) |
+| ![Projects — 3D-tilting project cards](screenshots/home-projects.png) | ![Into the terminal — self-typing terminal](screenshots/home-terminal.png) |
+| ![Contact — magnetic "Say hello" + copy email](screenshots/home-contact.png) | ![Projects page — full project grid](screenshots/projects.png) |
+| ![About page](screenshots/about.png) | ![Contact page — form + direct channels + copy email](screenshots/contact.png) |
 
-## Project Structure
+<details>
+<summary><strong>Full home page overview</strong></summary>
 
-```
-app/
-├── page.tsx                     → Home page (/)
-├── layout.tsx                   → Root layout (Navbar + Footer wrap every page)
-├── globals.css                  → Global styles (sticky footer flexbox setup)
-└── (dashboard)/                 → Route group — organizes files without affecting URLs
-    ├── about/
-    │   └── page.tsx             → /about
-    ├── projects/
-    │   └── page.tsx             → /projects
-    └── contact/
-        └── page.tsx             → /contact
+![Entire home page from top to bottom](screenshots/home-full.png)
 
-components/
-├── AppNavbar.tsx                → Navbar with logo, links, and theme toggle
-├── HeroCards.tsx                → Colorful highlight cards for the homepage
-├── Skills.tsx                   → Tech stack badges
-├── Footer.tsx                   → Site footer with social links
-└── ThemeToggle.tsx              → Dark/light mode toggle button
-
-public/
-├── logo.png                     → Navbar logo
-├── profile.jpg                  → About page profile photo
-└── about-cover.jpg               → About page cover image
-```
+</details>
 
 ---
 
-## Getting Started
+## ✨ Features
 
-### 1. Clone the repository
+**Design**
+
+- 🖤 **Monochrome dark theme** — warm near-black (`#0f0f0e`) with an ivory accent (`#e4dfd2`); hierarchy through weight and motion, not color
+- 📊 **Editorial "Right now" board** — hairline-row now-page widget showing what I'm learning, building and what's next
+- 📑 **Minimal section headings** — titles that decode in with a text-scramble effect
+- 🧭 **Fixed blur navbar** — underline-grow hover states and a mobile hamburger menu
+- ⌘ **Terminal-inspired type details** throughout — mono labels, hairline borders
+
+**Interaction & animation** (all respect `prefers-reduced-motion`)
+
+- 🖱️ **Custom trailing cursor** — an accent dot with a spring-following ring that expands over interactive elements (desktop only)
+- 🧲 **Magnetic buttons** — CTAs that pull toward the cursor
+- 🎞️ **Minimal scroll reveals** — quiet opacity fades, once per element
+- 📈 **Scroll-drawn timeline** — the experience line draws itself as you scroll
+- 🔤 **Text scramble decode** on the hero tagline and every section title
+- 🌀 **3D tilt cards** — project cards rotate in perspective toward the mouse
+- 📜 **Revolving hero headline** — "I build *interfaces* / *experiences* / ..." cycling words
+- ⏱️ **Live IST clock** — ticking footer widget
+
+**Home page sections**
+
+1. **Hero** — staggered intro, availability-free clean start, "View my work" / "Get in touch"
+2. **About** — short bio + quick-facts list
+3. **Right now** — learning / building / next up / daily drivers
+4. **Experience** — MakTal Technologies timeline
+5. **Projects** — featured work as tilt cards
+6. **Skills**
+7. **Into the terminal** — a fake terminal that types out its own script, forever
+8. **Contact** — big CTA, copy-email button and social links
+
+**Other pages**
+
+- 📄 `/about` — full bio, journey, and what I'm currently learning
+- 🧩 `/Projects` — complete project grid (Blue Tide, ACME dashboard, Markdown blog, Todo app)
+- ✉️ `/Contact` — mailto-backed message form + direct channels
+
+**Engineering**
+
+- ⚡ Next.js App Router — fully static, zero runtime data
+- 🧩 Small, focused client components (the server tree only sends `<Reveal>` wrappers and static markup)
+- 🌓 Dark-only by design — no flash-of-theme-toggle
+- ♿ Accessible: semantic markup, labeled controls, reduced-motion support
+- 🔍 SEO metadata with per-page titles
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer | Tool |
+|---|---|
+| Framework | Next.js 16 (App Router, Turbopack) |
+| UI | React 19 + TypeScript |
+| Styling | Tailwind CSS 4 (CSS variables → design tokens) |
+| Animation | Framer Motion 12 |
+| Fonts | Geist + Geist Mono (via `next/font`) |
+| Icons | Inline SVG + `react-icons` |
+
+---
+
+## 🚀 Getting Started
 
 ```bash
-git clone <your-repo-url>
-cd my-portfolio
-```
-
-### 2. Install dependencies
-
-```bash
+# 1. Install dependencies
 npm install
-```
 
-### 3. Run the development server
-
-```bash
+# 2. Start the dev server
 npm run dev
-```
+# → http://localhost:3000
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-### 4. Build for production
-
-```bash
+# 3. Production build & run
 npm run build
 npm start
 ```
 
----
+> 📷 `node scripts/screenshot.mjs` regenerates all README screenshots
+> (requires the site running on `localhost:3000` and Microsoft Edge).
 
-## Deployment
+## 📂 Project Structure
 
-This project is deployed on [Vercel](https://vercel.com/):
+```
+app/
+├─ layout.tsx            # root layout, fonts, metadata, cursor
+├─ page.tsx              # one-page home (all sections)
+├─ globals.css           # design tokens, scrollbar, selection
+└─ (dashboard)/
+   ├─ about/page.tsx     # about page
+   ├─ Projects/page.tsx  # project grid
+   └─ Contact/page.tsx   # contact page
+components/
+├─ Navbar.tsx            # fixed blur navbar + mobile menu
+├─ Hero.tsx              # staggered intro, rotating word, parallax
+├─ Terminal.tsx          # self-typing fake terminal
+├─ ExperienceTimeline.tsx# scroll-drawn timeline
+├─ NowBoard.tsx          # "right now" hairline rows
+├─ ProjectItem.tsx       # 3D-tilt project card
+├─ ContactForm.tsx       # mailto-backed form
+├─ Cursor.tsx            # trailing cursor ring
+├─ Magnetic.tsx          # magnetic hover wrapper
+├─ ScrambleText.tsx      # decode-in text
+├─ Tilt.tsx              # 3D tilt wrapper
+├─ Reveal.tsx            # minimal scroll fade
+├─ SectionHeading.tsx    # scramble heading + hairline
+├─ CopyEmail.tsx         # one-click email copy
+├─ LocalTime.tsx         # ticking IST clock
+└─ Footer.tsx
+lib/
+└─ data.ts               # projects, skills, experience, socials
+public/
+└─ screenshots/          # README screenshots
+scripts/
+└─ screenshot.mjs        # regenerates README screenshots (puppeteer-core)
+```
 
-1. Push the repository to GitHub
-2. Import the repo at [vercel.com](https://vercel.com/new)
-3. Vercel auto-detects the Next.js framework and deploys with zero config
+## 🎨 Design Tokens
 
-Live site: **[https://porfolio-8tfar4elv-948635.vercel.app/](https://porfolio-8tfar4elv-948635.vercel.app/)**
+Defined once in `app/globals.css` and consumed through Tailwind (`bg-accent`, `text-muted`, `border-border`...):
 
----
+```css
+:root {
+  --background: #0f0f0e;  /* warm near-black   */
+  --surface:    #161615;  /* cards, terminal   */
+  --foreground: #eaeae5;  /* primary text      */
+  --muted:      #90908a;  /* secondary text    */
+  --border:     #242422;  /* hairlines         */
+  --accent:     #e4dfd2;  /* ivory highlight   */
+}
+```
 
-## Key Concepts Practiced
+## 📬 Contact
 
-- App Router file-based routing and route groups
-- Server Components vs. Client Components (`"use client"`)
-- Shared layouts (Navbar/Footer persisting across routes)
-- Bootstrap's grid system (`Container`, `Row`, `Col`)
-- Bootstrap utility classes (spacing, typography, color, rounding)
-- Controlled forms with `useState`
-- Theme persistence with `localStorage`
-- Image optimization with `next/image`
+**Abin T S** — Full-Stack Developer
 
----
+- 🖥️ GitHub: [abints47](https://github.com/abints47)
+- 💼 LinkedIn: [Abin T S](https://www.linkedin.com/in/abin-t-s)
+- ✉️ Email: abinthazhathupurakkal@gmail.com
 
-## Future Improvements
-
-- Wire the contact form to an email service (e.g., Formspree)
-- Add dynamic project detail pages (`/projects/[slug]`)
-- Add scroll-based animations
-- Add a blog section using Markdown files
+Currently training at MakTal Technologies — open to freelance and full-time work.

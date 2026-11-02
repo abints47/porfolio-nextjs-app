@@ -3,7 +3,12 @@ import Hero from "@/components/Hero";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import ProjectItem from "@/components/ProjectItem";
-import { projects, skills, experience, socials } from "@/lib/data";
+import Magnetic from "@/components/Magnetic";
+import Terminal from "@/components/Terminal";
+import ExperienceTimeline from "@/components/ExperienceTimeline";
+import CopyEmail from "@/components/CopyEmail";
+import NowBoard from "@/components/NowBoard";
+import { projects, skills, socials } from "@/lib/data";
 
 export default function Home() {
   return (
@@ -12,7 +17,7 @@ export default function Home() {
 
       <div className="mx-auto max-w-5xl px-6">
         {/* ── About ─────────────────────────────────────────── */}
-        <section id="about" className="mt-28 scroll-mt-24">
+        <section id="about" className="mt-24 scroll-mt-24">
           <SectionHeading title="About" />
           <div className="grid gap-12 md:grid-cols-[3fr_2fr]">
             <Reveal>
@@ -56,69 +61,54 @@ export default function Home() {
                   <span className="text-muted">status</span>
                   <span className="text-accent">open to work</span>
                 </li>
+                <li className="flex justify-between border-b border-border pb-3">
+                  <a
+                    href="/Abin_Resume.pdf"
+                    download
+                    className="text-muted"
+                  >
+                    Resume PDF
+                  </a>
+                  <span>Download</span>
+                </li>
               </ul>
             </Reveal>
           </div>
         </section>
 
+        {/* ── Right now ─────────────────────────────────────── */}
+        <section id="now" className="mt-24 scroll-mt-24">
+          <SectionHeading title="Right now" />
+          <NowBoard />
+        </section>
+
         {/* ── Experience ────────────────────────────────────── */}
-        <section id="experience" className="mt-28 scroll-mt-24">
+        <section id="experience" className="mt-24 scroll-mt-24">
           <SectionHeading title="Experience" />
-          <Reveal>
-            {experience.map((exp) => (
-              <div
-                key={exp.period}
-                className="group grid gap-2 border-t border-border py-7 sm:grid-cols-[160px_1fr] sm:gap-8"
-              >
-                <span className="pt-1 font-mono text-xs tracking-wide text-muted">
-                  {exp.period}
-                </span>
-                <div>
-                  <h3 className="font-semibold transition-colors group-hover:text-accent">
-                    {exp.role}{" "}
-                    <span className="text-muted">@ {exp.company}</span>
-                  </h3>
-                  <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted">
-                    {exp.summary}
-                  </p>
-                  <ul className="mt-3 flex flex-wrap gap-2">
-                    {["Next.js", "React", "TypeScript", "SSR", "API Routes"].map(
-                      (tech) => (
-                        <li
-                          key={tech}
-                          className="rounded-full border border-border px-3 py-1 font-mono text-[11px] text-muted"
-                        >
-                          {tech}
-                        </li>
-                      ),
-                    )}
-                  </ul>
-                </div>
-              </div>
-            ))}
-          </Reveal>
+          <ExperienceTimeline />
         </section>
 
         {/* ── Projects ──────────────────────────────────────── */}
-        <section id="projects" className="mt-28 scroll-mt-24">
+        <section id="projects" className="mt-24 scroll-mt-24">
           <SectionHeading title="Projects" />
           <Reveal>
             <p className="mb-6 -mt-4 max-w-xl text-sm text-muted">
               A few things I&apos;ve designed and built.
             </p>
           </Reveal>
-          <Reveal delay={0.05}>
-            {projects.slice(0, 3).map((project) => (
-              <ProjectItem
-                key={project.title}
-                title={project.title}
-                description={project.description}
-                tags={project.tags}
-                live={project.live}
-                repo={project.repo}
-              />
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {projects.slice(0, 3).map((project, i) => (
+              <Reveal key={project.title} delay={i * 0.08} className="h-full">
+                <ProjectItem
+                  title={project.title}
+                  description={project.description}
+                  tags={project.tags}
+                  live={project.live}
+                  repo={project.repo}
+                />
+              </Reveal>
             ))}
-          </Reveal>
+          </div>
           <Reveal delay={0.1}>
             <div className="mt-8 flex justify-center">
               <Link
@@ -132,7 +122,7 @@ export default function Home() {
         </section>
 
         {/* ── Skills ────────────────────────────────────────── */}
-        <section id="skills" className="mt-28 scroll-mt-24">
+        <section id="skills" className="mt-24 scroll-mt-24">
           <SectionHeading title="Skills" />
           <Reveal>
             <ul className="flex flex-wrap gap-2.5">
@@ -148,8 +138,30 @@ export default function Home() {
           </Reveal>
         </section>
 
+        {/* ── Into the terminal ─────────────────────────────── */}
+        <section id="terminal" className="mt-24 scroll-mt-24">
+          <SectionHeading title="Into the terminal" />
+          <div className="grid items-center gap-8 md:grid-cols-[3fr_2fr]">
+            <Reveal>
+              <Terminal />
+            </Reveal>
+            <Reveal delay={0.1}>
+              <p className="font-mono text-sm text-accent">// my daily workflow</p>
+              <p className="mt-4 leading-relaxed text-muted">
+                This is roughly how I spend my days — inspecting, typing and
+                shipping. The commands above run themselves, but the same way of
+                thinking is how I approach every real project: break the problem
+                down, prototype fast, then refine until it feels effortless.
+              </p>
+              <p className="mt-4 font-mono text-xs leading-relaxed text-muted/70">
+                ps: hire --check returns available ✓ pass — every single time.
+              </p>
+            </Reveal>
+          </div>
+        </section>
+
         {/* ── Contact ───────────────────────────────────────── */}
-        <section id="contact" className="mt-28 scroll-mt-24 pb-4">
+        <section id="contact" className="mt-24 scroll-mt-24 pb-4">
           <SectionHeading title="Contact" />
           <Reveal>
             <div className="flex flex-col items-center py-8 text-center">
@@ -161,13 +173,15 @@ export default function Home() {
                 I&apos;m open to freelance work, full-time roles and interesting
                 collaborations. My inbox is always open — drop me a line.
               </p>
-              <a
-                href={socials.email}
-                className="mt-8 rounded-full border border-accent px-8 py-3 font-mono text-sm text-accent transition-colors hover:bg-accent/10"
-              >
-                Say hello
-              </a>
-              <div className="mt-6 flex gap-6 font-mono text-xs text-muted">
+              <Magnetic>
+                <a
+                  href={socials.email}
+                  className="inline-block rounded-full border border-accent px-8 py-3 font-mono text-sm text-accent transition-colors hover:bg-accent/10"
+                >
+                  Say hello
+                </a>
+              </Magnetic>
+              <div className="mt-6 flex items-center gap-6 font-mono text-xs text-muted">
                 <a
                   href={socials.github}
                   target="_blank"
@@ -184,6 +198,7 @@ export default function Home() {
                 >
                   LinkedIn
                 </a>
+                <CopyEmail />
               </div>
             </div>
           </Reveal>

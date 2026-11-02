@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Reveal from "@/components/Reveal";
 import ContactForm from "@/components/ContactForm";
+import CopyEmail from "@/components/CopyEmail";
 import { socials } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -53,6 +54,9 @@ export default function ContactPage() {
             <br />
             Usually replies within a day.
           </p>
+          <div className="mt-5">
+            <CopyEmail />
+          </div>
         </Reveal>
 
         {/* Form */}

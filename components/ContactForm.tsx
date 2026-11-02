@@ -19,7 +19,7 @@ export default function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="rounded-xl border border-border bg-surface/50 p-6"
+      className="rounded-lg border border-border bg-surface/50 p-6"
     >
       <div className="grid gap-4 sm:grid-cols-2">
         <div>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { socials } from "@/lib/data";
+import LocalTime from "@/components/LocalTime";
 
 const icons = [
   {
@@ -18,9 +19,14 @@ export default function Footer() {
   return (
     <footer className="mt-28 border-t border-border">
       <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-5 px-6 py-10 sm:flex-row">
-        <p className="font-mono text-xs text-muted">
-          © {new Date().getFullYear()} Abin T S — built with Next.js
-        </p>
+        <div>
+          <p className="font-mono text-xs text-muted">
+            © {new Date().getFullYear()} Abin T S — built with Next.js
+          </p>
+          <div className="mt-2">
+            <LocalTime />
+          </div>
+        </div>
 
         <div className="flex items-center gap-4">
           {icons.map((icon) => (
